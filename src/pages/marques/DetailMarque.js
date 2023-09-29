@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,7 +18,6 @@ const DetailMarque = () => {
             const filteredVoitures = response.data.filter((voiture) => voiture.brandID == brandID);
 
             setVoiture(filteredVoitures);
-            console.log(voitures);
         }).catch((error) => {
             console.error('Error lors de la recuperation depuis API', error);
         });
