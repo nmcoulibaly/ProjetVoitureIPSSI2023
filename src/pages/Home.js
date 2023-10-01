@@ -3,7 +3,7 @@ import MarquesList from "./marques/MarquesList";
 const Home = () => {
     return (
         <>
-            <h1>Les meilleures marques de voitures👍</h1>
+            <marquee direction="right"><h1> Les meilleures marques de voitures👍</h1></marquee >
             <MarquesList />
         </>
     );

@@ -35,10 +35,18 @@ const VoituresList = () => {
                 console.error("Error lors de la recuperation depuis API", error);
             });
     };
-
-    const handleDeleteVoiture = () => {
-        // Appelez la fonction chargerListeVoitures pour mettre à jour la liste de voitures après la suppression
-        chargerListeVoitures();
+    const handleDeleteVoiture = (voitureId) => {
+        // Effectuez la suppression de la voiture en utilisant l'API
+        axios
+            .delete(`https://formation.inow.fr/demo/api/v1/cars/${voitureId}`)
+            .then((response) => {
+                console.log("Voiture supprimée avec succès !");
+                // Mettez à jour la liste de voitures pour refléter la suppression
+                chargerListeVoitures();
+            })
+            .catch((error) => {
+                console.error("Erreur lors de la suppression de la voiture :", error);
+            });
     };
 
     useEffect(() => {
@@ -98,7 +106,7 @@ const VoituresList = () => {
                                             </Button>
                                             <SupprimerVoiture
                                                 voitureId={voiture.id}
-                                                onDelete={handleDeleteVoiture}
+                                                onDelete={() => handleDeleteVoiture(voiture.id)} // Appel de la fonction avec l'ID de la voiture
                                             />
                                         </>
                                     )}
